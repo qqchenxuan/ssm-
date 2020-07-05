@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.MainModelDao">
+	<select id="selectOrderManagement" resultType="com.ssm.entity.MainModel">
+	    select * from main_model
+	</select>
+	<select id="selectAllOrCoNo"  resultType="String">
+		select distinct  co_no from main_model
+	</select>
+	<select id="selectByCoNo" parameterType="String" resultType="com.ssm.entity.MainModel">
+		select distinct co_no,all_no from main_model where co_no = #{co_no}
+	</select>
+	<select id="selectLikeCoNo" parameterType="String" resultType="com.ssm.entity.MainModel">
+		select * from main_model where  co_no  like #{co_no}
+	</select>
+	
+	<select id="findMainModelList" parameterType="String" resultType="com.ssm.entity.MainModel">
+		select * from main_model where  co_no = #{co_no}  limit #{pageRow},#{pageSize}
+	</select>
+</mapper>

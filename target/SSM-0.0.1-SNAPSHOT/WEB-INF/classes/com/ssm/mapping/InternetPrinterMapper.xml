@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.InternetPrinterDao">
+
+<select id ="selectInternetPrinter" resultType="com.ssm.entity.InternetPrinter">
+  select * from `internetprinter`
+</select>
+
+
+<select id="selectInternetPrinterOne" parameterType="String" resultType="com.ssm.entity.InternetPrinter">
+   select * from `internetprinter`  where IID = #{IID}
+</select>
+
+<insert id="insertInternetPrinter"  parameterType="com.ssm.entity.InternetPrinter">
+   insert  into `internetprinter`(IID,IName,PrintIP,IAddTime,IRole,IRamark) values (#{IID},#{IName},#{PrintIP},#{IAddTime},#{IRole},#{IRamark})
+</insert>
+
+<update id="updateInternetPrinter" parameterType="com.ssm.entity.InternetPrinter">
+   update `internetprinter` set IName=#{IName},PrintIP=#{PrintIP},IAddTime=#{IAddTime} ,IRole=#{IRole},IRamark=#{IRamark} where IID=#{IID}
+</update>
+	
+<delete id="deleteInternetPrinter" parameterType="int">
+   delete from `internetprinter`where IID=#{IID}
+</delete>
+
+<select id="getInternetPrinterPage" parameterType="java.util.Map" resultType="com.ssm.entity.InternetPrinter">
+    select * from `internetprinter` limit  #{pageRow},#{pageSize}
+</select>
+</mapper>
